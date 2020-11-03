@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201103112130 extends AbstractMigration
+final class Version20201103125813 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -25,6 +25,7 @@ final class Version20201103112130 extends AbstractMigration
         $this->addSql('CREATE TABLE option_luggage (option_id INT NOT NULL, luggage_id INT NOT NULL, INDEX IDX_41F3DFAFA7C41D6F (option_id), INDEX IDX_41F3DFAF7B18BD6A (luggage_id), PRIMARY KEY(option_id, luggage_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE photo (id INT AUTO_INCREMENT NOT NULL, luggage_id INT DEFAULT NULL, link VARCHAR(255) NOT NULL, INDEX IDX_14B784187B18BD6A (luggage_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE reaction (id INT AUTO_INCREMENT NOT NULL, luggage_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_A4D707F77B18BD6A (luggage_id), INDEX IDX_A4D707F7A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE option_luggage ADD CONSTRAINT FK_41F3DFAFA7C41D6F FOREIGN KEY (option_id) REFERENCES `option` (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE option_luggage ADD CONSTRAINT FK_41F3DFAF7B18BD6A FOREIGN KEY (luggage_id) REFERENCES luggage (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE photo ADD CONSTRAINT FK_14B784187B18BD6A FOREIGN KEY (luggage_id) REFERENCES luggage (id)');
@@ -39,10 +40,12 @@ final class Version20201103112130 extends AbstractMigration
         $this->addSql('ALTER TABLE photo DROP FOREIGN KEY FK_14B784187B18BD6A');
         $this->addSql('ALTER TABLE reaction DROP FOREIGN KEY FK_A4D707F77B18BD6A');
         $this->addSql('ALTER TABLE option_luggage DROP FOREIGN KEY FK_41F3DFAFA7C41D6F');
+        $this->addSql('ALTER TABLE reaction DROP FOREIGN KEY FK_A4D707F7A76ED395');
         $this->addSql('DROP TABLE luggage');
         $this->addSql('DROP TABLE `option`');
         $this->addSql('DROP TABLE option_luggage');
         $this->addSql('DROP TABLE photo');
         $this->addSql('DROP TABLE reaction');
+        $this->addSql('DROP TABLE user');
     }
 }
