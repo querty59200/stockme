@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -21,15 +24,21 @@
   <component name="ChangeListManager">
     <list default="true" id="bd355f9e-e845-4a0e-982e-8830ceaaad5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b75db210-94e4-4124-ad8f-4ee2201a8b8c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b75db210-94e4-4124-ad8f-4ee2201a8b8c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/stockme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stockme.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103101128.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103112130.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201103125813.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LuggageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LuggageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/LuggageSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LuggageSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/LuggageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LuggageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/LuggageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LuggageRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_partials/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/luggage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/option/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/option/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/photo/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/photo/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +174,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -182,7 +192,8 @@
       <updated>1604393240058</updated>
       <workItem from="1604393241203" duration="907000" />
       <workItem from="1604394186719" duration="437000" />
-      <workItem from="1604394956385" duration="11679000" />
+      <workItem from="1604394956385" duration="13331000" />
+      <workItem from="1604409937301" duration="6268000" />
     </task>
     <servers />
   </component>
@@ -199,6 +210,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604397048249">
@@ -209,5 +221,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="45" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1604406940247" />
+    <state x="428" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604411896839">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="428" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1604411896839" />
+    <state x="184" y="8" key="SettingsEditor" timestamp="1604409852766">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604409852766" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1604409568944">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604409568944" />
   </component>
 </project>

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Luggage;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,33 @@ class LuggageRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Luggage::class);
+    }
+
+    /**
+    * @return QueryBuilder
+    */
+    private function findAllQuery() : QueryBuilder {
+        return $this->createQueryBuilder('l')
+            ->where('l.available = true');
+    }
+
+    /**
+     * @return Luggage[]
+     */
+    public function findAllAvailable() : array {
+        return $this->findAllQuery()
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Luggage[]
+     */
+    public function findAllAvailableLatestTen() : array {
+        return $this->findAllQuery()
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

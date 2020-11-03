@@ -1,49 +1,109 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Luggage index{% endblock %}
-
 {% block body %}
-    <h1>Luggage index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Available</th>
-                <th>Price</th>
-                <th>Height</th>
-                <th>Length</th>
-                <th>Width</th>
-                <th>Weight</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for luggage in luggage %}
-            <tr>
-                <td>{{ luggage.id }}</td>
-                <td>{{ luggage.name }}</td>
-                <td>{{ luggage.description }}</td>
-                <td>{{ luggage.available ? 'Yes' : 'No' }}</td>
-                <td>{{ luggage.price }}</td>
-                <td>{{ luggage.height }}</td>
-                <td>{{ luggage.length }}</td>
-                <td>{{ luggage.width }}</td>
-                <td>{{ luggage.weight }}</td>
-                <td>
-                    <a href="{{ path('luggage_show', {'id': luggage.id}) }}">show</a>
-                    <a href="{{ path('luggage_edit', {'id': luggage.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
+    <div class="jumbotron">
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="col">
+                {{ form_row(form.maxPrice) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.minvolume) }}
+            </div>
+            <div class="col">
+                <button class="btn btn-primary">
+                    Rechercher
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <div class="navigation row-cols-1">
+        {{ knp_pagination_render(luggages) }}
+        {% if app.user %}
+            <a href="{{ path('cart_show')}}" class="btn btn-info float-right">
+                <i class="fas fa-shopping-cart mr-1"></i>
+                Mon Panier
+            </a>
+        {% endif %}
+    </div>
+    <div class="container row flex">
+        {% for luggage in luggages %}
+            {% if luggage.available %}
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ luggage.name }}</h5>
+                            <p class="card-text">{{ luggage.description }}</p>
+                            <p class="card-text">{{ luggage.price }} €</p>
+                            <p>Disponible en ce moment</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-link" href="{{ path('luggage_show', {'id' : luggage.id, 'slug' : luggage.slug}) }}" class="btn btn-sm btn-outline-secondary">Détail</a>
+                                    {% if is_granted('ROLE_ADMIN')%}
+                                        <a class="btn btn-link" href="{{ path('luggage_edit', {'id' : luggage.id, 'slug' : luggage.slug}) }}" class="btn btn-sm btn-outline-secondary">Editer</a>
+                                    {% endif %}
+                                    {% if app.user and is_granted('ROLE_USER')%}
+                                        <a class="js-add btn btn-link" href="{{ path('cart_add', {'id' : luggage.id}) }}" class="btn btn-sm btn-outline-secondary">Ajouter au panier</a>
+                                    {% endif %}
+                                </div>
+                                <a class="js-like btn btn-link" href="{{ path('luggage_reaction', {'id' : luggage.id}) }}">
+                                    {% if app.user and luggage.isLikedByUser(app.user) %}
+                                        <i class="fas fa-thumbs-up"></i>
+                                    {% else %}
+                                        <i class="far fa-thumbs-up"></i>
+                                    {% endif %}
+                                    <span class="js-likes">{{ luggage.reactions | length }}</span>
+                                    <span>J'aime</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
+{% endblock %}
 
-    <a href="{{ path('luggage_new') }}">Create new</a>
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+        function onClickBtnReaction(event) {
+
+            event.preventDefault();
+
+            let url = this.href;
+            let spanCount = this.querySelector("js-likes");
+            let i = this.querySelector("i");
+
+            axios.get(url)
+                .then((response) => {
+                    console.log(response);
+                    spanCount.textContent = response.data.reactions;
+                    if(i.classList.contains("fas")){
+                        i.classList.replace("fas","far");
+                    } else {
+                        i.classList.replace("far","fas");
+                    }
+                })
+                .catch((error) => {
+                    if(error.response.status === '403'){
+                        window.alert("Vous devez être connecté pour liker un bagage");
+                    } else {
+                        window.alert("Réssayer plus tard");
+                    }
+                })
+        }
+
+        document.querySelectorAll("js-like").forEach(
+            function (link) {
+                link.addEventListener("click", onClickBtnReaction);
+            }
+        )
+
+    </script>
+
 {% endblock %}

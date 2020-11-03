@@ -49,7 +49,7 @@ class PhotoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="photo_show", methods={"GET"})
+     * @Route("/{id}/show", name="photo_show", methods={"GET"})
      */
     public function show(Photo $photo): Response
     {
@@ -79,7 +79,7 @@ class PhotoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="photo_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="photo_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Photo $photo): Response
     {
