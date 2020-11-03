@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luggage index{% endblock %}
+
+{% block body %}
+    <h1>Luggage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Available</th>
+                <th>Price</th>
+                <th>Height</th>
+                <th>Length</th>
+                <th>Width</th>
+                <th>Weight</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for luggage in luggage %}
+            <tr>
+                <td>{{ luggage.id }}</td>
+                <td>{{ luggage.name }}</td>
+                <td>{{ luggage.description }}</td>
+                <td>{{ luggage.available ? 'Yes' : 'No' }}</td>
+                <td>{{ luggage.price }}</td>
+                <td>{{ luggage.height }}</td>
+                <td>{{ luggage.length }}</td>
+                <td>{{ luggage.width }}</td>
+                <td>{{ luggage.weight }}</td>
+                <td>
+                    <a href="{{ path('luggage_show', {'id': luggage.id}) }}">show</a>
+                    <a href="{{ path('luggage_edit', {'id': luggage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('luggage_new') }}">Create new</a>
+{% endblock %}

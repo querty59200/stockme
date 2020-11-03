@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luggage{% endblock %}
+
+{% block body %}
+    <h1>Luggage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ luggage.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ luggage.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ luggage.description }}</td>
+            </tr>
+            <tr>
+                <th>Available</th>
+                <td>{{ luggage.available ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ luggage.price }}</td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td>{{ luggage.height }}</td>
+            </tr>
+            <tr>
+                <th>Length</th>
+                <td>{{ luggage.length }}</td>
+            </tr>
+            <tr>
+                <th>Width</th>
+                <td>{{ luggage.width }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ luggage.weight }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('luggage_index') }}">back to list</a>
+
+    <a href="{{ path('luggage_edit', {'id': luggage.id}) }}">edit</a>
+
+    {{ include('luggage/_delete_form.html.twig') }}
+{% endblock %}
