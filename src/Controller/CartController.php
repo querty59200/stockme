@@ -22,25 +22,52 @@ class CartController extends AbstractController
     {
         return $this->render('cart/index.html.twig', [
             'items' => $cartService->getCart(),
-            'total' => $cartService->getTotalPrice()
+            'total' => $cartService->getTotalPriceAllItems()
         ]);
     }
 
-    /**
-     * @Route("Cart/{id}/add", name="cart_add")
-     */
-    public function add(Luggage $luggage, CartService $cartService) : Response{
+    // BY ITEM
 
-        $cartService->add($luggage);
-        return $this->redirectToRoute('luggage');
+    /**
+     * @Route("/{id}/add", name="cart_add")
+     */
+    public function addOne(Luggage $luggage, CartService $cartService) : Response {
+
+        $cartService->addOneItemInSession($luggage);
+
+        return $this->json([
+            'nbItemsSelected' => $cartService->countItemSelected($luggage),
+            'priceTotalByItem' => $cartService->getTotalPrice($luggage),
+            'priceTotalForAll' => $cartService->getTotalPriceAllItems(),
+
+            'nbAllItemsSelected' => $cartService->countAllItemsSelected()]
+        , 200);
+    }
+    /**
+     * @Route("/{id}/delete", name="cart_delete")
+     */
+    public function deleteOne(Luggage $luggage, CartService $cartService) : Response {
+
+        // Ote un item en session
+        $cartService->deleteOneItemInSession($luggage);
+
+        return $this->json([
+                'nbItemsSelected' => $cartService->countItemSelected($luggage),
+                'priceTotalByItem' => $cartService->getTotalPrice($luggage),
+                'priceTotalForAll' => $cartService->getTotalPriceAllItems(),
+
+                'nbAllItemsSelected' => $cartService->countAllItemsSelected()]
+            , 200);
     }
 
+    // FOR ALL
+
     /**
-     * @Route("Cart/{id}/remove", name="cart_remove")
+     * @Route("/{id}/remove", name="cart_remove")
      */
     public function remove(Luggage $luggage, CartService $cartService) : Response {
 
-        $cartService->remove($luggage);
+        $cartService->removeAllSameItems($luggage);
         return $this->redirectToRoute('cart_show');
     }
 }

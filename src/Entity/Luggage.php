@@ -76,11 +76,17 @@ class Luggage
      */
     private $options;
 
+    /**
+     * @ORM\Column(type="float", nullable=false)
+     */
+    private $volume;
+
     public function __construct()
     {
         $this->reactions = new ArrayCollection();
         $this->photos = new ArrayCollection();
         $this->options = new ArrayCollection();
+        $this->volume = ($this->height * $this->length * $this->width)/1000;
     }
 
     public function getId(): int
@@ -289,6 +295,18 @@ class Luggage
         if ($this->options->removeElement($option)) {
             $option->removeLuggage($this);
         }
+
+        return $this;
+    }
+
+    public function getVolume(): ?float
+    {
+        return $this->volume;
+    }
+
+    public function setVolume(?float $volume): self
+    {
+        $this->volume = $volume;
 
         return $this;
     }

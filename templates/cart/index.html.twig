@@ -2,15 +2,17 @@
 
 {% block body %}
 
+    <a class="btn btn-primary" href="{{ path('luggage_index') }}">Retour à la liste</a>
+
     <div class="bg-light p-3">
         <h1>Votre panier</h1>
         {% if items | length > 0 %}
-            <table class="table">
+            <table class="table text-center">
                 <thead>
                 <tr>
                     <th>Produit</th>
                     <th>Prix</th>
-                    <th>Quantité</th>
+                    <th class>Quantité</th>
                     <th>Total</th>
                     <th></th>
                 </tr>
@@ -20,8 +22,18 @@
                     <tr>
                         <td>{{ item.luggage.name }}</td>
                         <td>{{ item.luggage.price }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.luggage.price * item.quantity }}</td>
+                        <td class="row">
+                            <a class="js-minusNbItem" href="{{ path('cart_delete', {'id' : item.luggage.id}) }}">
+                                <i class="fas fa-minus-circle"></i>
+                            </a>
+                            <div class="js-nbItems align-text-center">
+                                 {{ item.quantity }}
+                            </div>
+                            <a class="js-plusNbItem" href="{{ path('cart_add', {'id' : item.luggage.id}) }}">
+                                <i class="fas fa-plus-circle"></i>
+                            </a>
+                        </td>
+                        <td class="js-totalPriceByItem"> {{ item.luggage.price * item.quantity }} </td>
                         <td>
                             <a href="{{ path('cart_remove', {id : item.luggage.id}) }}" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
@@ -33,7 +45,7 @@
                 <tfoot>
                 <tr>
                     <td colspan="3" class="text-right">Total :</td>
-                    <td>{{ total }}</td>
+                    <td id="js-totalPriceItems">{{ total }}</td>
                     <td></td>
                 </tr>
                 </tfoot>
@@ -42,5 +54,68 @@
             <p>Le panier est vide</p>
         {% endif %}
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+
+    function onClickBtnOneItemDeleteCart(event) {
+
+        event.preventDefault();
+
+        let url = this.href;
+        let nbItems = this.querySelector('div.js-nbItems');
+        let totalPriceByItem = this.querySelector('td.js-totalPriceByItem');
+        let totalPriceItems = this.querySelector('td#js-totalPriceItems');
+
+        axios.get(url)
+            .then((response) => {
+                console.log(response);
+                console.log(response.data.nbItemsSelected);
+                console.log(response.data.priceTotalByItem);
+                console.log(response.data.priceTotalForAll);
+            })
+            .catch((error) => {
+            window.alert("Réssayer plus tard");
+            })
+        }
+
+    function onClickBtnOneItemAddCart(event) {
+
+        event.preventDefault();
+        let url = this.href;
+        let nbItems = this.querySelector('div.js-nbItems');
+        let totalPriceByItem = this.querySelector('td.js-totalPriceByItem');
+        let totalPriceItems = this.querySelector('td#js-totalPriceItems');
+
+        axios.get(url)
+            .then((response) => {
+                console.log(response);
+                console.log(response.data.nbItemsSelected);
+                console.log(response.data.priceTotalByItem);
+                console.log(response.data.priceTotalForAll);
+            })
+            .catch((error) => {
+                window.alert("Réssayer plus tard");
+            })
+    }
+
+        document.querySelectorAll('a.js-minusNbItem').forEach(
+            function (link) {
+                link.addEventListener('click', onClickBtnOneItemDeleteCart);
+            }
+        )
+
+        document.querySelectorAll('a.js-plusNbItem').forEach(
+            function (link) {
+                link.addEventListener('click', onClickBtnOneItemAddCart);
+            }
+        )
+
+    </script>
 
 {% endblock %}

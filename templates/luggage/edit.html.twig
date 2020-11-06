@@ -1,13 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Luggage{% endblock %}
+{% block title %}Editer le bagage{% endblock %}
 
 {% block body %}
-    <h1>Edit Luggage</h1>
+    <div>
+        <h1>Editer le bagage</h1>
+        <button class="btn">{{ button_label|default('Save') }}</button>
+        <a class="btn btn-primary" href="{{ path('luggage_index') }}">Retour à la liste</a>
 
-    {{ include('luggage/_form.html.twig', {'button_label': 'Update'}) }}
+        <form method="post" action="{{ path('luggage_delete', {'id': luggage.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cet item?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ luggage.id) }}">
+            <button class="btn btn-primary">Supprimer</button>
+        </form>
+    </div>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 
-    <a href="{{ path('luggage_index') }}">back to list</a>
-
-    {{ include('luggage/_delete_form.html.twig') }}
 {% endblock %}

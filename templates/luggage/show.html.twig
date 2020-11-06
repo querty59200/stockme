@@ -1,10 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Luggage{% endblock %}
+{% block title %}Show{% endblock %}
 
 {% block body %}
-    <h1>Luggage</h1>
 
+    <div class ="d-flex justify-content-around">
+        <h1>Baggage</h1>
+        <form method="post" action="{{ path('luggage_delete', {'id': luggage.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cet item?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ luggage.id) }}">
+            <button class="btn btn-primary">Supprimer</button>
+        </form>
+        <a class="btn btn-primary" href="{{ path('luggage_edit', {'id': luggage.id, 'slug' : luggage.slug}) }}">Editer</a>
+        <a class="btn btn-primary" href="{{ path('luggage_index') }}">Retour à la liste</a>
+    </div>
     <table class="table">
         <tbody>
             <tr>
@@ -12,7 +21,7 @@
                 <td>{{ luggage.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <td>{{ luggage.name }}</td>
             </tr>
             <tr>
@@ -20,35 +29,29 @@
                 <td>{{ luggage.description }}</td>
             </tr>
             <tr>
-                <th>Available</th>
-                <td>{{ luggage.available ? 'Yes' : 'No' }}</td>
+                <th>Disponibilité</th>
+                <td>{{ luggage.available ? 'Oui' : 'Non' }}</td>
             </tr>
             <tr>
-                <th>Price</th>
-                <td>{{ luggage.price }}</td>
+                <th>Prix</th>
+                <td>{{ luggage.price }} €</td>
             </tr>
             <tr>
-                <th>Height</th>
-                <td>{{ luggage.height }}</td>
+                <th>Hauteur</th>
+                <td>{{ luggage.height }} cm</td>
             </tr>
             <tr>
-                <th>Length</th>
-                <td>{{ luggage.length }}</td>
+                <th>Longueur</th>
+                <td>{{ luggage.length }} cm</td>
             </tr>
             <tr>
-                <th>Width</th>
-                <td>{{ luggage.width }}</td>
+                <th>Largeur</th>
+                <td>{{ luggage.width }} cm</td>
             </tr>
             <tr>
-                <th>Weight</th>
-                <td>{{ luggage.weight }}</td>
+                <th>Poids</th>
+                <td>{{ luggage.weight }} cm</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('luggage_index') }}">back to list</a>
-
-    <a href="{{ path('luggage_edit', {'id': luggage.id}) }}">edit</a>
-
-    {{ include('luggage/_delete_form.html.twig') }}
 {% endblock %}

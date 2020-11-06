@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Luggage{% endblock %}
+{% block title %}New{% endblock %}
 
 {% block body %}
-    <h1>Create new Luggage</h1>
+    <h1>Créer un bagage</h1>
 
-    {{ include('luggage/_form.html.twig') }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    <a href="{{ path('luggage_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('luggage_index') }}">back to list</a>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+
 {% endblock %}

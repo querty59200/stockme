@@ -2,63 +2,62 @@
 
 {% block body %}
 
-    <div class="jumbotron">
-        {{ form_start(form) }}
+    <div class="jumbotron" xmlns="http://www.w3.org/1999/html">
         <div class="form-row">
-            <div class="col">
-                {{ form_row(form.maxPrice) }}
+        {{ form_start(form) }}
+            <div>{{ form_row(form.maxPrice) }}</div>
+            <div>{{ form_row(form.minvolume) }}</div>
+            <div>
+                <button class="btn btn-primary">Rechercher</button>
             </div>
-            <div class="col">
-                {{ form_row(form.minvolume) }}
-            </div>
-            <div class="col">
-                <button class="btn btn-primary">
-                    Rechercher
-                </button>
-            </div>
-        </div>
         {{ form_end(form) }}
+        </div>
     </div>
-    <div class="navigation row-cols-1">
+    <div class="container navigation">
         {{ knp_pagination_render(luggages) }}
-        {% if app.user %}
-            <a href="{{ path('cart_show')}}" class="btn btn-info float-right">
-                <i class="fas fa-shopping-cart mr-1"></i>
-                Mon Panier
-            </a>
-        {% endif %}
+        <a class="btn btn-primary" href="{{ path('cart_show')}}">Mon Panier
+                <span class="badge badge-light" id="js-nbItem">{{ nbAllItemsSelected }}</span>
+        </a>
     </div>
     <div class="container row flex">
         {% for luggage in luggages %}
             {% if luggage.available %}
                 <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                    <div class="card mb-3">
+                        <h3 class="card-header">{{ luggage.name }} <br> (à partir de {{ luggage.price }} € / jour</h3>
                         <div class="card-body">
-                            <h5 class="card-title">{{ luggage.name }}</h5>
+                            <h5 class="card-title">Catégorie</h5>
+                            <h6 class="card-subtitle text-muted">Agence de Lyon</h6>
+                        </div>
+{#                        <img class="card-img-top" src="https://via.placeholder.com/80"/>#}
+                        <div class="card-body">
                             <p class="card-text">{{ luggage.description }}</p>
-                            <p class="card-text">{{ luggage.price }} €</p>
-                            <p>Disponible en ce moment</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-link" href="{{ path('luggage_show', {'id' : luggage.id, 'slug' : luggage.slug}) }}" class="btn btn-sm btn-outline-secondary">Détail</a>
-                                    {% if is_granted('ROLE_ADMIN')%}
-                                        <a class="btn btn-link" href="{{ path('luggage_edit', {'id' : luggage.id, 'slug' : luggage.slug}) }}" class="btn btn-sm btn-outline-secondary">Editer</a>
-                                    {% endif %}
-                                    {% if app.user and is_granted('ROLE_USER')%}
-                                        <a class="js-add btn btn-link" href="{{ path('cart_add', {'id' : luggage.id}) }}" class="btn btn-sm btn-outline-secondary">Ajouter au panier</a>
-                                    {% endif %}
-                                </div>
-                                <a class="js-like btn btn-link" href="{{ path('luggage_reaction', {'id' : luggage.id}) }}">
-                                    {% if app.user and luggage.isLikedByUser(app.user) %}
-                                        <i class="fas fa-thumbs-up"></i>
-                                    {% else %}
-                                        <i class="far fa-thumbs-up"></i>
-                                    {% endif %}
-                                    <span class="js-likes">{{ luggage.reactions | length }}</span>
-                                    <span>J'aime</span>
-                                </a>
-                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Volume : {{ (luggage.volume / 1000) | number_format(0,' ')}} Litres<br> (L : {{ luggage.length }} / h : {{ luggage.height }} / l : {{ luggage.width }})</li>
+                            <li class="list-group-item">Poids : {{ luggage.weight }} </li>
+                            <li class="list-group-item">
+                                {% if luggage.available %}
+                                    Disponible
+                                {% else %}
+                                    Indisponible
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{{ path('luggage_show', {'id' : luggage.id, 'slug' : luggage.slug}) }}" class="card-link">Détails</a>
+                            <a class="js-like card-link" href="{{ path('luggage_reaction', {'id' : luggage.id}) }}">
+                                {% if app.user and luggage.isLikedByUser(app.user) %}
+                                    <i class="fas fa-thumbs-up"></i>
+                                {% else %}
+                                    <i class="far fa-thumbs-up"></i>
+                                {% endif %}
+                                <span class="js-likes">{{ luggage.reactions | length }}</span>
+                                <span>J'aime</span>
+                            </a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a class="js-add cart-link" href="{{ path('cart_add', {'id' : luggage.id}) }}" >Ajouter au panier</a>
                         </div>
                     </div>
                 </div>
@@ -68,20 +67,21 @@
 {% endblock %}
 
 {% block javascripts %}
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script>
 
         function onClickBtnReaction(event) {
 
-            event.preventDefault();
+            const url = this.href;
+            const spanCount = this.querySelector('span.js-likes');
+            const i = this.querySelector('i');
 
-            let url = this.href;
-            let spanCount = this.querySelector("js-likes");
-            let i = this.querySelector("i");
+            event.preventDefault();
 
             axios.get(url)
                 .then((response) => {
-                    console.log(response);
                     spanCount.textContent = response.data.reactions;
                     if(i.classList.contains("fas")){
                         i.classList.replace("fas","far");
@@ -98,12 +98,32 @@
                 })
         }
 
-        document.querySelectorAll("js-like").forEach(
+        function onClickBtnAddCart(event) {
+
+            const url = this.href;
+
+            event.preventDefault();
+
+            axios.get(url)
+                .then((response) => {
+                    document.querySelector('span#js-nbItem').textContent = response.data.nbAllItemsSelected;
+            })
+                .catch((error) => {
+                        window.alert("Réssayer plus tard");
+                })
+        }
+
+        document.querySelectorAll('a.js-like').forEach(
             function (link) {
-                link.addEventListener("click", onClickBtnReaction);
+                link.addEventListener('click', onClickBtnReaction);
             }
         )
 
+        document.querySelectorAll('a.js-add').forEach(
+            function (link) {
+                link.addEventListener('click', onClickBtnAddCart);
+            }
+        )
     </script>
 
 {% endblock %}

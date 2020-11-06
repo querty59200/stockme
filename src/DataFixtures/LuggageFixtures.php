@@ -19,9 +19,9 @@ class LuggageFixtures extends Fixture
             $luggage->setDescription($faker->text(20));
             $luggage->setAvailable($faker->boolean);
             $luggage->setPrice($faker->randomFloat(2,10,30));
-            $luggage->setHeight($faker->randomFloat(2,100,200));
-            $luggage->setWidth($faker->randomFloat(2,100,200));
-            $luggage->setLength($faker->randomFloat(2,100,200));
+            $luggage->setHeight($faker->randomFloat(2,30,100));
+            $luggage->setWidth($faker->randomFloat(2,20,40));
+            $luggage->setLength($faker->randomFloat(2,20,60));
             $luggage->setWeight($faker->randomFloat(2,500,5000));
 
             $manager->persist($luggage);

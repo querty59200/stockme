@@ -25,7 +25,7 @@ class PhotoFixtures extends Fixture implements DependentFixtureInterface
 
         for($i =0; $i < 200; $i++){
             $photo = new Photo();
-            $photo->setLink($faker->imageUrl(120, 180, 'cats'));     // 'http://lorempixel.com/800/600/cats/'
+            $photo->setLink($faker->imageUrl(60, 90, 'cats'));     // 'http://lorempixel.com/800/600/cats/'
             $photo->setLuggage($faker->randomElement($this->luggageRepository->findAll()));
 
             $manager->persist($photo);

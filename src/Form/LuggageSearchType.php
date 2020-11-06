@@ -18,7 +18,7 @@ class LuggageSearchType extends AbstractType
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Prix minimum'
+                    'placeholder' => 'Prix maximun'
                 ]
             ])
             ->add('minvolume', IntegerType::class, [

@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Luggage;
+use App\Entity\LuggageSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -29,18 +31,32 @@ class LuggageRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Luggage[]
+     * @return Query
      */
-    public function findAllAvailable() : array {
-        return $this->findAllQuery()
-            ->getQuery()
-            ->getResult();
+    public function findAllAvailable(LuggageSearch $luggageSearch) : Query {
+
+        $query = $this->findAllQuery();
+
+        if($luggageSearch->getMaxPrice()){
+            $query = $query
+                ->ANDWHERE('l.price < :maxPrice')
+                ->setParameter('maxPrice', $luggageSearch->getMaxPrice());
+        }
+
+        if($luggageSearch->getMinvolume()){
+            $query = $query
+                ->ANDWHERE('l.volume < :minVolume')
+                ->setParameter('minVolume', $luggageSearch->getMinvolume());
+        }
+
+        return $query->getQuery();
+
     }
 
     /**
-     * @return Luggage[]
+     * @return Query
      */
-    public function findAllAvailableLatestTen() : array {
+    public function findAllAvailableLatestTen() : Query {
         return $this->findAllQuery()
             ->setMaxResults(10)
             ->getQuery()

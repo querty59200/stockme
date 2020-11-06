@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Luggage;
 use App\Entity\LuggageSearch;
+use App\Entity\Reaction;
 use App\Form\LuggageSearchType;
 use App\Form\LuggageType;
 use App\Repository\LuggageRepository;
 use App\Repository\ReactionRepository;
+use App\Service\Cart\CartService;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -26,22 +28,25 @@ class LuggageController extends AbstractController
      */
     public function index(Request $request,
                           PaginatorInterface $paginator,
-                          LuggageRepository $luggageRepository): Response
+                          LuggageRepository $luggageRepository, CartService $cartService): Response
     {
+
         $search = new LuggageSearch();
         $form = $this->createForm(LuggageSearchType::class, $search);
         $form->handleRequest($request);
 
 
         $paginatedLuggages = $paginator->paginate(
-            $luggageRepository->findAllAvailable(),
+            $luggageRepository->findAllAvailable($search),
             $request->query->getInt('page', 1),
             6);
 
 
         return $this->render('luggage/index.html.twig', [
             'luggages' => $paginatedLuggages,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'nbAllItemsSelected' => $cartService->countAllItemsSelected()
+
         ]);
     }
 
@@ -87,7 +92,7 @@ class LuggageController extends AbstractController
     /**
      * @Route("/{id}-{slug}/edit", name="luggage_edit", methods={"GET","POST"}, requirements={"slug": "[a-z0-9\-]*"})
      */
-    public function edit(Slugify $slugify, Request $request, Luggage $luggage): Response
+    public function edit(Request $request, Luggage $luggage): Response
     {
         $form = $this->createForm(LuggageType::class, $luggage);
         $form->handleRequest($request);
@@ -105,7 +110,7 @@ class LuggageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="luggage_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="luggage_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Luggage $luggage): Response
     {
@@ -119,7 +124,7 @@ class LuggageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/reaction", name="luggage_reaction")
+     * @Route("/{id}/reaction", name="luggage_reaction", methods={"GET"})
      */
     public function like(Luggage $luggage,
                          EntityManagerInterface $entityManager,
@@ -129,7 +134,7 @@ class LuggageController extends AbstractController
 
         if(!$user){
             return $this->json([
-                'code' => '403',
+                'code' => '403'
             ],403);
         }
 
@@ -146,6 +151,7 @@ class LuggageController extends AbstractController
                 'reactions' => $reactionRepository->count([
                     'luggage' => $luggage])
             ], 200);
+
         } else {
 
             $reaction = new Reaction();
