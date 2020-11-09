@@ -90,7 +90,7 @@
                     }
                 })
                 .catch((error) => {
-                    if(error.response.status === '403'){
+                    if(error.response.status === 403){
                         window.alert("Vous devez être connecté pour liker un bagage");
                     } else {
                         window.alert("Réssayer plus tard");

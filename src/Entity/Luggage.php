@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=LuggageRepository::class)
@@ -17,6 +18,7 @@ class Luggage
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("luggage")
      */
     private $id;
 
@@ -27,37 +29,44 @@ class Luggage
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("luggage")
      */
     private $description;
 
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("luggage")
      */
     private $available;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("luggage")
      */
     private $price;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("luggage")
      */
     private $height;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("luggage")
      */
     private $length;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("luggage")
      */
     private $width;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("luggage")
      */
     private $weight;
 
@@ -78,6 +87,7 @@ class Luggage
 
     /**
      * @ORM\Column(type="float", nullable=false)
+     * @Groups("luggage")
      */
     private $volume;
 

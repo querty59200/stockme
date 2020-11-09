@@ -19,52 +19,29 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd355f9e-e845-4a0e-982e-8830ceaaad5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b75db210-94e4-4124-ad8f-4ee2201a8b8c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b75db210-94e4-4124-ad8f-4ee2201a8b8c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/stockme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stockme.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103131955.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AppController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LuggageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LuggageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PhotoController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReactionController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/LuggageFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/LuggageFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PhotoFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/PhotoFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Luggage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Luggage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/LuggageSearchType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LuggageSearchType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/LuggageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LuggageType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/OptionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OptionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LuggageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LuggageRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Cart/CartService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Cart/CartService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_partials/navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/cart/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/luggage/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/luggage/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/luggage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/luggage/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/luggage/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/photo/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/photo/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/photo/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/photo/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/photo/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/photo/show.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reaction/_delete_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reaction/_form.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reaction/edit.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reaction/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reaction/new.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reaction/show.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +54,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -186,6 +169,7 @@
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jlz02IWAwOmfqZcN2FW3Gc9moD" />
@@ -200,16 +184,18 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Symfony.ProfilerSettingsForm" />
+    <property name="settings.editor.selected.configurable" value="settings.webpack" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\symfony\stockme\templates\luggage" />
-      <recent name="C:\symfony\stockme\templates\app" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\symfony\stockme" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\symfony\stockme\assets\js\cart" />
+      <recent name="C:\symfony\stockme\assets\js" />
+      <recent name="C:\symfony\stockme\templates\luggage" />
+      <recent name="C:\symfony\stockme\templates\app" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -226,7 +212,9 @@
       <workItem from="1604409937301" duration="29175000" />
       <workItem from="1604496556343" duration="506000" />
       <workItem from="1604497098059" duration="36616000" />
-      <workItem from="1604664102286" duration="2670000" />
+      <workItem from="1604664102286" duration="18358000" />
+      <workItem from="1604754756330" duration="5171000" />
+      <workItem from="1604912636808" duration="5982000" />
     </task>
     <servers />
   </component>
@@ -238,7 +226,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -266,13 +266,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604481647981" />
-    <state x="184" y="8" key="SettingsEditor" timestamp="1604479626697">
+    <state x="184" y="8" key="SettingsEditor" timestamp="1604910627265">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604479626697" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1604481283749">
+    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604910627265" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1604700954578">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604481283749" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1604700954577" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1604911548608">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604911548608" />
   </component>
 </project>
