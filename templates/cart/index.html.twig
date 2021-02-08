@@ -18,35 +18,38 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for item in items %}
-                    <tr>
-                        <td>{{ item.luggage.name }}</td>
-                        <td>{{ item.luggage.price }}</td>
-                        <td class="row">
-                            <a class="js-minusNbItem" href="{{ path('cart_delete', {'id' : item.luggage.id}) }}">
-                                <i class="fas fa-minus-circle"></i>
-                            </a>
-                            <div class="js-nbItemsSelected align-text-center">
-                                 {{ item.quantity }}
-                            </div>
-                            <a class="js-plusNbItem" href="{{ path('cart_add', {'id' : item.luggage.id}) }}">
-                                <i class="fas fa-plus-circle"></i>
-                            </a>
-                        </td>
-                        <td class="js-totalPriceByItem"> {{ item.luggage.price * item.quantity }} </td>
-                        <td>
-                            <a href="{{ path('cart_remove', {id : item.luggage.id}) }}" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
+                    {% for item in items %}
+                        <tr>
+                            <td>{{ item.luggage.name }}</td>
+                            <td>{{ item.luggage.price }}</td>
+                            <td class="row">
+                                <a class="js-minusNbItem" href="{{ path('cart_delete', {'id' : item.luggage.id}) }}">
+                                    <i class="fas fa-minus-circle"></i>
+                                </a>
+                                <div class="js-nbItemsSelected align-text-center">
+                                     {{ item.quantity }}
+                                </div>
+                                <a class="js-plusNbItem" href="{{ path('cart_add', {'id' : item.luggage.id}) }}">
+                                    <i class="fas fa-plus-circle"></i>
+                                </a>
+                            </td>
+                            <td class="js-totalPriceByItem"> {{ item.luggage.price * item.quantity }} </td>
+                            <td>
+                                <a href="{{ path('cart_remove', {id : item.luggage.id}) }}" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
                 <tfoot>
                 <tr>
                     <td colspan="3" class="text-right">Total :</td>
                     <td id="js-totalPriceItems">{{ total }}</td>
-                    <td></td>
+                    <td>
+                        <a href="#" class="btn btn-success btn-sm">
+                            Commander : <i class="fas fa-cash-register"></i>">
+                        </a></td>
                 </tr>
                 </tfoot>
             </table>
@@ -58,5 +61,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('build/cart.js') }}"></script>
+    {{ encore_entry_script_tags('cart') }}
 {% endblock %}

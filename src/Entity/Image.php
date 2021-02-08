@@ -2,15 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\PhotoRepository;
+use App\Repository\ImageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Traversable;
 
 /**
  * @ORM\Entity(repositoryClass=PhotoRepository::class)
  */
-class Photo
+class Image
 {
     /**
      * @ORM\Id
@@ -20,30 +21,18 @@ class Photo
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $link;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Luggage::class, inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity=Luggage::class, inversedBy="images")
      */
     private $luggage;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
-
-        return $this;
     }
 
     public function getLuggage(): ?Luggage
@@ -54,6 +43,18 @@ class Photo
     public function setLuggage(Luggage $luggage): self
     {
         $this->luggage = $luggage;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

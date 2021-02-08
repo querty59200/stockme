@@ -1,0 +1,46 @@
+{% for luggage in luggages %}
+    {% if luggage.available %}
+        <div class="js-marker" data-id="{{ luggage.id }}" data-name="{{ luggage.name }}" data-lat="{{ luggage.storage.latitude }}" data-lng="{{ luggage.storage.longitude }}" data-price="{{ luggage.price }}">
+            <div>
+                <h3 class="card-header">{{ luggage.name }} <br> (à partir de 4.99 € / jour</h3>
+                <div class="card-body">
+                    <h5 class="card-title">Catégorie</h5>
+                    <h6 class="card-subtitle text-muted">Agence de Lyon</h6>
+                </div>
+                    <img class="card-img-top" src="https://static.fnac-static.com/multimedia/Images/FR/MDM/50/99/c2/12753232/1540-1/tsp20201026171122/Raclette-Tefal-8-coupelles-RE320012-1050-W-Noir.jpg"/>
+                <div class="card-body">
+                    <p class="card-text">{{ luggage.description }}</p>
+{#                    <ul class="list-group list-group-flush">#}
+{#                        <li class="list-group-item">Volume : {{ (luggage.volume / 1000) | number_format(0,' ')}} Litres<br> (L : {{ luggage.length }} / h : {{ luggage.height }} / l : {{ luggage.width }})</li>#}
+{#                        <li class="list-group-item">Poids : {{ luggage.weight }} </li>#}
+{#                        <li class="list-group-item">#}
+{#                            {% if luggage.available %}#}
+{#                                Disponible#}
+{#                            {% else %}#}
+{#                                Indisponible#}
+{#                            {% endif %}#}
+{#                        </li>#}
+{#                    </ul>#}
+                </div>
+                <div class="card-body">
+                    <a href="{{ path('luggage_show', {'id' : luggage.id, 'slug' : luggage.slug}) }}" class="btn btn-primary-success">Détails</a>
+                    <a href="{{ path('cart_add', {'id' : luggage.id}) }}" class="js-add cart-link">Ajouter</a>
+                    <br>
+                    <a>
+                        <i class="fas fa-thumbs-down"></i>
+                        <span class="js-likes">12 Je n'aime pas</span>
+                    </a>
+                    <br>
+                    <a class="js-like card-link" href="{{ path('luggage_reaction', {'id' : luggage.id}) }}">
+                        {% if app.user and luggage.isLikedByUser(app.user) %}
+                            <i class="fas fa-thumbs-up"></i>
+                        {% else %}
+                            <i class="far fa-thumbs-up"></i>
+                        {% endif %}
+                        <span class="js-likes">{{ luggage.reactions | length }} J'aime </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

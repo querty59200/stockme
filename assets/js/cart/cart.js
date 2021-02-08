@@ -1,51 +1,31 @@
-function onClickBtnOneItemDeleteCart(event) {
+import axios from 'axios';
 
-    event.prevent();
+function onClickBtnOneItemChangeCart(event) {
 
     const url = this.href;
-    const nbItemsSelected = this.querySelector('div.js-nbItemsSelected');
-    const totalPriceByItem = this.querySelector('td.js-totalPriceByItem');
-    const totalPriceItems = this.querySelector('td#js-totalPriceItems');
+    const nbItemsSelected = document.querySelector(".js-nbItemsSelected");
+    const totalPriceByItem = document.querySelector(".js-totalPriceByItem");
+    const totalPriceItems = document.querySelector("#js-totalPriceItems");
+
+    event.preventDefault()
+    // kk
 
     axios.get(url)
         .then((response) => {
-            console.log(response);
-            console.log(response.data.nbItemsSelected);
-            console.log(response.data.priceTotalByItem);
-            console.log(response.data.priceTotalForAll);
+            nbItemsSelected.textContent = response.data.nbItemsSelected;
+            totalPriceByItem.textContent = response.data.priceTotalByItem;
+            totalPriceItems.textContent = response.data.priceTotalForAll;
         })
         .catch((error) => {
             window.alert(error.message);
         })
 }
 
-function onClickBtnOneItemAddCart(event) {
-
-    event.preventDefault();
-
-    const url = this.href;
-    const nbItemsSelected = this.querySelector("div.js-nbItemsSelected");
-    const totalPriceByItem = this.querySelector("td.js-totalPriceByItem");
-    const totalPriceItems = this.querySelector("td#js-totalPriceItems");
-
-    axios.get(url)
-        .then((response) => {
-            console.log(response);
-            console.log(response.data.nbItemsSelected);
-            console.log(response.data.priceTotalByItem);
-            console.log(response.data.priceTotalForAll);
-        })
-        .catch((error) => {
-            window.alert(error.message);
-        })
-}
-
-    document.querySelectorAll('a.js-minusNbItem').forEach(
+    document.querySelectorAll('.js-minusNbItem').forEach(
         function (link) {
-            link.addEventListener('click', onClickBtnOneItemDeleteCart);
+            link.addEventListener('click', onClickBtnOneItemChangeCart);
         })
-
-    document.querySelectorAll('a.js-plusNbItem').forEach(
+    document.querySelectorAll('.js-plusNbItem').forEach(
         function (link) {
-            link.addEventListener('click', onClickBtnOneItemAddCart);
+            link.addEventListener('click', onClickBtnOneItemChangeCart);
         })

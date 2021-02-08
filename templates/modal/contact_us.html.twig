@@ -1,0 +1,19 @@
+{% set base = 'base.html.twig' %}
+{% if isAjax %}
+    {% set base = 'base_ajax.html.twig' %}
+{% endif %}
+{% extends base %}
+
+{% block body %}
+    <aside id="contactUs">
+        <div>
+            <h1>Create new Order</h1>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+        </div>
+    </aside>
+{% endblock %}
+
+

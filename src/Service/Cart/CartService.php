@@ -67,7 +67,7 @@ class CartService
     public function getTotalPrice(Luggage $luggage): float
     {
 
-        return $this->countItemSelected($luggage) * $luggage->getPrice();
+        return number_format($this->countItemSelected($luggage) * $luggage->getPrice(), 2);
 
     }
 
@@ -108,7 +108,7 @@ class CartService
             $total += $totalItem;
         }
 
-        return $total;
+        return number_format($total, 2);
     }
 
     public function getCart(): array

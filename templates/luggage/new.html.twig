@@ -5,12 +5,8 @@
 {% block body %}
     <h1>Créer un bagage</h1>
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ include('luggage/_form.html.twig') }}
+
     <a href="{{ path('luggage_index') }}">Retour à la liste</a>
-
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-
 
 {% endblock %}

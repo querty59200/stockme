@@ -3,12 +3,21 @@
 namespace App\DataFixtures;
 
 use App\Entity\Luggage;
+use App\Repository\StorageRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class LuggageFixtures extends Fixture
+class LuggageFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $storageRepository;
+
+    public function __construct(StorageRepository $storageRepository)
+    {
+        $this->storageRepository = $storageRepository;
+    }
+
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
@@ -23,9 +32,17 @@ class LuggageFixtures extends Fixture
             $luggage->setWidth($faker->randomFloat(2,20,40));
             $luggage->setLength($faker->randomFloat(2,20,60));
             $luggage->setWeight($faker->randomFloat(2,500,5000));
+            $luggage->setStorage($faker->randomElement($this->storageRepository->findAll()));
 
             $manager->persist($luggage);
         }
         $manager->flush();
     }
+
+    public function getDependencies()
+    {
+        return array(
+            StorageFixtures::class,
+        );
+        }
 }

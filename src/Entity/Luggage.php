@@ -71,9 +71,9 @@ class Luggage
     private $weight;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="luggage")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="luggage", cascade={"persist"})
      */
-    private $photos;
+    private $images;
 
     /**
      * @ORM\OneToMany(targetEntity=Reaction::class, mappedBy="luggage", orphanRemoval=true)
@@ -91,12 +91,23 @@ class Luggage
      */
     private $volume;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Storage::class, inversedBy="luggages")
+     */
+    private $storage;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Order::class, mappedBy="luggage")
+     */
+    private $orders;
+
     public function __construct()
     {
         $this->reactions = new ArrayCollection();
-        $this->photos = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->options = new ArrayCollection();
         $this->volume = ($this->height * $this->length * $this->width)/1000;
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): int
@@ -104,7 +115,7 @@ class Luggage
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -121,7 +132,7 @@ class Luggage
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -132,6 +143,7 @@ class Luggage
 
         return $this;
     }
+
     public function getAvailable(): ?bool
     {
         return $this->available;
@@ -144,7 +156,7 @@ class Luggage
         return $this;
     }
 
-    public function getPrice(): float
+    public function getPrice(): ?float
     {
         return $this->price;
     }
@@ -204,6 +216,30 @@ class Luggage
         return $this;
     }
 
+    public function getVolume(): ?float
+    {
+        return $this->volume;
+    }
+
+    public function setVolume(?float $volume): self
+    {
+        $this->volume = $volume;
+
+        return $this;
+    }
+
+    public function getStorage(): ?Storage
+    {
+        return $this->storage;
+    }
+
+    public function setStorage(?Storage $storage): self
+    {
+        $this->storage = $storage;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Reaction[]
      */
@@ -235,51 +271,40 @@ class Luggage
     }
 
     /**
-     * @return Collection|Photo[]
+     * @return Collection|Image[]
      */
-    public function getPhotos(): Collection
+    public function getImages(): Collection
     {
-        return $this->photos;
+        return $this->images;
     }
 
-    public function setPhotos(Photo $photos): self
+    public function setImages(Image $images): self
     {
-        $this->photos = $photos;
+        $this->images = $images;
 
         return $this;
     }
 
-    public function addPhoto(Photo $photo): self
+    public function addImage(Image $image): self
     {
-        if (!$this->photos->contains($photo)) {
-            $this->photos[] = $photo;
-            $photo->setLuggage($this);
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setLuggage($this);
         }
 
         return $this;
     }
 
-    public function removePhoto(Photo $photo): self
+    public function removeImage(Image $image): self
     {
-        if ($this->photos->removeElement($photo)) {
+        if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($photo->getLuggage() === $this) {
-                $photo->setLuggage(null);
+            if ($image->getLuggage() === $this) {
+                $image->setLuggage(null);
             }
         }
 
         return $this;
-    }
-
-    public function isLikedByUser(User $user) : bool
-    {
-
-        foreach ($this->getReactions() as $reaction) {
-            if ($reaction->getUser()->getId() === $user->getId()) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -309,15 +334,43 @@ class Luggage
         return $this;
     }
 
-    public function getVolume(): ?float
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
     {
-        return $this->volume;
+        return $this->orders;
     }
 
-    public function setVolume(?float $volume): self
+    public function addOrder(Order $order): self
     {
-        $this->volume = $volume;
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->addLuggage($this);
+        }
 
         return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->removeElement($order)) {
+            $order->removeLuggage($this);
+        }
+
+        return $this;
+    }
+
+    // Others
+
+    public function isLikedByUser(User $user) : bool
+    {
+
+        foreach ($this->getReactions() as $reaction) {
+            if ($reaction->getUser()->getId() === $user->getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

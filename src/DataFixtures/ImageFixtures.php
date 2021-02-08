@@ -3,14 +3,14 @@
 namespace App\DataFixtures;
 
 use App\Controller\LuggageController;
-use App\Entity\Photo;
+use App\Entity\Image;
 use App\Repository\LuggageRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class PhotoFixtures extends Fixture implements DependentFixtureInterface
+class ImageFixtures extends Fixture implements DependentFixtureInterface
 {
     private $luggageRepository;
 
@@ -24,11 +24,12 @@ class PhotoFixtures extends Fixture implements DependentFixtureInterface
         $faker = Factory::create('fr_FR');
 
         for($i =0; $i < 200; $i++){
-            $photo = new Photo();
-            $photo->setLink($faker->imageUrl(60, 90, 'cats'));     // 'http://lorempixel.com/800/600/cats/'
-            $photo->setLuggage($faker->randomElement($this->luggageRepository->findAll()));
+            $image = new Image();
+            $image->setName($faker->userName);
+            $image->setLink($faker->imageUrl(60, 90, 'cats'));     // 'http://lorempixel.com/800/600/cats/'
+            $image->setLuggage($faker->randomElement($this->luggageRepository->findAll()));
 
-            $manager->persist($photo);
+            $manager->persist($image);
         }
         $manager->flush();
     }

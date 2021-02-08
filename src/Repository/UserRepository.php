@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -35,6 +36,20 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
+
+//    public function findAllGreaterThanPrice(EntityRepository $entityRepository, int $price): array
+//    {
+//        $sql = '
+//            SELECT * FROM product p
+//            WHERE p.price > :price
+//            ORDER BY p.price ASC
+//            ';
+//        $stmt = $entityRepository->prepare($sql);
+//        $stmt->execute(['price' => $price]);
+//
+//        // returns an array of arrays (i.e. a raw data set)
+//        return $stmt->fetchAllAssociative();
+//    }
 
     // /**
     //  * @return User[] Returns an array of User objects

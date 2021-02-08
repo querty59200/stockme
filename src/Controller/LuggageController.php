@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
 use App\Entity\Luggage;
 use App\Entity\LuggageSearch;
 use App\Entity\Reaction;
@@ -10,9 +11,10 @@ use App\Form\LuggageType;
 use App\Repository\LuggageRepository;
 use App\Repository\ReactionRepository;
 use App\Service\Cart\CartService;
-use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Component\Pager\PaginatorInterface;
+use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +26,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LuggageController extends AbstractController
 {
     /**
-     * @Route("/", name="luggage_index")
+     * @Route("/", name="luggage_index", requirements={"_format"="html"}, methods={"GET"})
      */
     public function index(Request $request,
                           PaginatorInterface $paginator,
@@ -58,8 +60,18 @@ class LuggageController extends AbstractController
         $luggage = new Luggage();
         $form = $this->createForm(LuggageType::class, $luggage);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $images = $form->get('images')->getData();
+
+            foreach ($images as $image){
+                $fichierName = md5(uniqid()) . '.' .$image->guessExtension();
+                $image->move($this->getParameter('images_directory'), $fichierName);
+                $imageTemp = new Image();
+                $imageTemp->setName($fichierName);
+                $luggage->addImage($imageTemp);
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($luggage);
             $entityManager->flush();
@@ -166,5 +178,52 @@ class LuggageController extends AbstractController
                     'luggage' => $luggage])
             ],200);
         }
+    }
+
+    /**
+     * @Route("/{slug}-{id}/show/pdf", name="luggage_show_pdf", requirements={"slug": "[a-z0-9\-]*"}))
+     */
+    public function print(Pdf $snappy, string $slug,
+                               Luggage $luggage, LuggageRepository $luggageRepository)
+    {
+        if($luggage->getSlug() !== $slug){
+            return $this->redirectToRoute('luggage_show', [
+                'slug' => $luggage->getSlug(),
+                'id' => $luggage->getId()],
+                301);
+        }
+
+        $filename = $luggage->getName() . '.pdf';
+
+        $html = $this-> renderView('luggage/show.html.twig', [
+            'luggage' => $luggageRepository->find($luggage->getId())
+        ]);
+
+        return new PdfResponse(
+            $snappy->getOutputFromHtml($html), $filename);
+    }
+
+    /**
+     * @Route("/{slug}-{id}/show/display", name="luggage_show_display", requirements={"slug": "[a-z0-9\-]*"}))
+     */
+    public function display(Pdf $snappy, string $slug,
+                               Luggage $luggage, LuggageRepository $luggageRepository)
+    {
+        if($luggage->getSlug() !== $slug){
+            return $this->redirectToRoute('luggage_show', [
+                'slug' => $luggage->getSlug(),
+                'id' => $luggage->getId()],
+                301);
+        }
+
+        $html = $this-> render('luggage/show.html.twig', [
+            'luggage' => $luggageRepository->find($luggage->getId())
+        ]);
+
+        return new PdfResponse(
+            $snappy->getOutputFromHtml($html),
+        $luggage->getName() . '.pdf',
+            header('Content-Type: application/pdf')
+                );
     }
 }

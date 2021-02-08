@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=OptionRepository::class)
  * @ORM\Table(name="`option`")
  */
-class Option
+class Option implements \Iterator
 {
     /**
      * @ORM\Id
@@ -64,6 +64,7 @@ class Option
     {
         if (!$this->luggages->contains($luggage)) {
             $this->luggages[] = $luggage;
+            $luggage->addOption($this);
         }
 
         return $this;
@@ -74,5 +75,30 @@ class Option
         $this->luggages->removeElement($luggage);
 
         return $this;
+    }
+
+    public function current()
+    {
+        // TODO: Implement current() method.
+    }
+
+    public function next()
+    {
+        // TODO: Implement next() method.
+    }
+
+    public function key()
+    {
+        // TODO: Implement key() method.
+    }
+
+    public function valid()
+    {
+        // TODO: Implement valid() method.
+    }
+
+    public function rewind()
+    {
+        // TODO: Implement rewind() method.
     }
 }

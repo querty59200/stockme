@@ -1,0 +1,15 @@
+<?php
+
+use App\Repository\UserRepository;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+
+class UserRepositoryTest extends KernelTestCase {
+
+    public function testCountUsers(){
+        self::bootKernel(); // On démarre le noyau pour effectuer le(s) test(s)
+        $userRepository = self::$container->get(UserRepository::class); // On fait appel au container de service et on récupère le repository à tester
+        $nbUser = $userRepository->count([]); // Compte tous les utilisateurs en DB
+        $this->assertEquals(51, $nbUser);
+    }
+
+}

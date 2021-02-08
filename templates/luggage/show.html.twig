@@ -12,8 +12,12 @@
             <button class="btn btn-primary">Supprimer</button>
         </form>
         <a class="btn btn-primary" href="{{ path('luggage_edit', {'id': luggage.id, 'slug' : luggage.slug}) }}">Editer</a>
+        <a href="{{ path('luggage_show_pdf', {'id': luggage.id, 'slug' : luggage.slug}) }}">
+            <i class="fas fa-file-pdf"></i>
+        </a>
         <a class="btn btn-primary" href="{{ path('luggage_index') }}">Retour à la liste</a>
     </div>
+    <img class="card-img-top" width="50" height="60" src="https://www.lehavre.fr/sites/default/files/styles/miniature_landing/public/thumbnails/image/chat.jpg?itok=xDyhRAGl"/>
     <table class="table">
         <tbody>
             <tr>

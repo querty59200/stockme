@@ -1,0 +1,35 @@
+.map{
+    background-color: #C9C9C9;
+    position: sticky!important;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+
+.marker.is-active .leaflet-popup-content-wrapper,.marker.is-active .leaflet-popup-tip{
+    background-color: red;
+}
+
+.marker .leaflet-popup{
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.marker.leaflet-popup-content{
+    text-align: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+.marker.leaflet-popup-content-wrapper{
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+
+}
+
+.marker.leaflet-popup-tip-container{
+    display: none;
+}
+

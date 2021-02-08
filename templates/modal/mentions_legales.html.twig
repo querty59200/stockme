@@ -1,0 +1,20 @@
+{% set base = 'base.html.twig' %}
+{% if isAjax %}
+    {% set base = 'base_ajax.html.twig' %}
+{% endif %}
+{% extends base %}
+
+{% block body %}
+    <aside id="MentionsLegales">
+        <div>
+            <h1>Lorem</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet at aut facere, fugit
+                incidunt mollitia obcaecati odio qui quia.</p>
+            <p>Adipisci debitis deserunt dolorum est id illum, libero nam nihil rerum saepe sed vitae! Assumenda
+                harum nostrum possimus quas quis.</p>
+            <p>Consectetur delectus dicta facere ipsam minima perferendis reprehenderit vero! Accusantium autem
+                beatae earum fugit illo natus nisi quae quia tempora!</p>
+            <button class="js-modal-close">Fermer</button>
+        </div>
+    </aside>
+{% endblock %}
