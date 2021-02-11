@@ -28,68 +28,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd355f9e-e845-4a0e-982e-8830ceaaad5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/css/luggage/luggage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/map/map.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/luggage/luggage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/map/LeafletMap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/map/map.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/behat.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/index.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/paiement/paiement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/paypal/paypal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/_partials/footer.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base_ajax.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/luggage/_partials/_card.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/luggage/_partials/_map.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/luggage/_partials/_pagination.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/luggage/_partials/_search_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/modal/contact_us.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/modal/mentions_legales.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/UserRepositoryTest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b75db210-94e4-4124-ad8f-4ee2201a8b8c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b75db210-94e4-4124-ad8f-4ee2201a8b8c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/stockme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stockme.iml" afterDir="false" />
+    <list default="true" id="bd355f9e-e845-4a0e-982e-8830ceaaad5e" name="Default Changelist" comment="add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/cart/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/cart/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/routing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201104145037.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201105210726.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/LuggageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LuggageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/LuggageFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/LuggageFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PhotoFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ImageFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Luggage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Luggage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Option.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Option.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/LuggageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LuggageType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PhotoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ImageType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PhotoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ImageRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Cart/CartService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Cart/CartService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cart/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cart/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/luggage/_partials/_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/_partials/_card.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/luggage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/luggage/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/luggage/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/luggage/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -404,8 +347,19 @@
       <workItem from="1612195140628" duration="861000" />
       <workItem from="1612344556451" duration="1099000" />
       <workItem from="1612363009295" duration="656000" />
-      <workItem from="1612778454560" duration="2167000" />
+      <workItem from="1612778454560" duration="12757000" />
+      <workItem from="1612987036045" duration="4045000" />
+      <workItem from="1612995197668" duration="65000" />
+      <workItem from="1613032610218" duration="863000" />
     </task>
+    <task id="LOCAL-00001" summary="add">
+      <created>1612780828501</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612780828501</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,6 +388,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
   <component name="WindowStateProjectService">
     <state x="397" y="6" key="#PHP" timestamp="1606917638147">
@@ -496,6 +454,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1604700954577" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1612780833143">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612780833143" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1606833562405">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

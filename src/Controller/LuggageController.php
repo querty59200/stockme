@@ -143,6 +143,7 @@ class LuggageController extends AbstractController
                          ReactionRepository $reactionRepository) : Response
     {
         $user = $this->getUser();
+        dd($user);
 
         if(!$user){
             return $this->json([

@@ -26,10 +26,10 @@
                     <a href="{{ path('luggage_show', {'id' : luggage.id, 'slug' : luggage.slug}) }}" class="btn btn-primary-success">Détails</a>
                     <a href="{{ path('cart_add', {'id' : luggage.id}) }}" class="js-add cart-link">Ajouter</a>
                     <br>
-                    <a>
-                        <i class="fas fa-thumbs-down"></i>
-                        <span class="js-likes">12 Je n'aime pas</span>
-                    </a>
+{#                    <a>#}
+{#                        <i class="fas fa-thumbs-down"></i>#}
+{#                        <span class="js-likes">12 Je n'aime pas</span>#}
+{#                    </a>#}
                     <br>
                     <a class="js-like card-link" href="{{ path('luggage_reaction', {'id' : luggage.id}) }}">
                         {% if app.user and luggage.isLikedByUser(app.user) %}

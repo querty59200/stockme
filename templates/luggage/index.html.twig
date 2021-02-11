@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block head %}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-          crossorigin=""/>
+{#    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"#}
+{#          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="#}
+{#          crossorigin=""/>#}
     {{ encore_entry_link_tags('luggage') }}
-    {{ encore_entry_link_tags('map') }}
+{#    {{ encore_entry_link_tags('map') }}#}
 {% endblock %}
 
 {% block body %}
     <header class="container mb-4">
         {% include 'luggage/_partials/_search_form.html.twig' %}
         {% include 'luggage/_partials/_pagination.html.twig' %}
+        {% dump('user') %}
         <a class="btn btn-primary" href="{{ path('cart_show') }}">Mon Panier
             <span class="badge badge-light" id="js-nbItem">{{ nbAllItemsSelected }}</span>
         </a>
@@ -20,11 +21,11 @@
         <div class="list">
             {% include 'luggage/_partials/_card.html.twig' %}
         </div>
-        {% include 'luggage/_partials/_map.html.twig' %}
+{#        {% include 'luggage/_partials/_map.html.twig' %}#}
     </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ encore_entry_script_tags('luggage') }}
-    {{ encore_entry_script_tags('map') }}
+{#    {{ encore_entry_script_tags('map') }}#}
 {% endblock %}
